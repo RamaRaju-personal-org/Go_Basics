@@ -5,6 +5,9 @@
   First go to the folder where the go file is present
 </div>
 
+> \[!NOTE]\
+> First go to the folder where the go file is present.
+
 -  ##### To run a go application in development :
 ```bash
    go run firstCode.go
