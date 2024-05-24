@@ -1,10 +1,5 @@
 # Go Basics
 
-<div style="border-left: 6px solid #FF7F3E; padding: 10px; margin-bottom: 10px;">
-  <strong style="color: #FF7F3E;">⚠️ Note:</strong> 
-  First go to the folder where the go file is present
-</div>
-
 > \[!NOTE]\
 > First go to the folder where the go file is present.
 
