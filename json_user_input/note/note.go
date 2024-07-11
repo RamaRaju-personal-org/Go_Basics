@@ -10,9 +10,9 @@ import (
 )
 
 type Note struct {
-	Title string //exposed 
-	Content string //exposed 
-	CreatedAt time.Time  //exposed 
+	Title string `json:"title"`               //exposed and Struct Tags ``
+	Content string `json:"content"`          //exposed and Struct Tags ``
+	CreatedAt time.Time `json:"created_at"` //exposed and Struct Tags ``
 }
 
 
