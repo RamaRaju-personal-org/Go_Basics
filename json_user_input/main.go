@@ -7,10 +7,32 @@ import (
 	"strings"
 
 	"example.com/user_input/note"
+	"example.com/user_input/todo"
 )
+
+type SaveNoter interface {
+	SaveNote() error
+}
 
 func main() {
 	title, content := GetNoteData()
+	todoText := UserInput("Todo text:")
+
+	todo, err := todo.New(todoText)
+
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	todo.Display()
+	err = saveData(todo)
+    if err !=nil {
+		return 
+	}
+
+
+
 
 	UserNote, err := note.New(title, content) // calling the constructor func  in note/note.go which has struct values
 
@@ -21,15 +43,36 @@ func main() {
 
 	UserNote.Display()
 	
-	err = UserNote.SaveNote()
+	err = saveData(UserNote)
+    if err !=nil {
+		return 
+	}
+}
+
+func getTodoData() string {
+ return UserInput("Enter Todo:")
+}
+
+
+// func somedata (value interface{}){  ------> in this case any value is allowed 
+// 	fmt.Println(value)
+// }
+
+
+
+//excepts either a todo or note  struct , SaveNoter is an interface
+// data variable will be of type interface
+
+func saveData(data SaveNoter ) error { 
+	err := data.SaveNote()
 
 	if err !=nil {
 		fmt.Println(" Saving the note failed")
-		return
+		return err 
 	}
 
 	fmt.Println("saving the note succeeded!")
-
+	return nil 
 }
 
 func GetNoteData() (string, string) {
